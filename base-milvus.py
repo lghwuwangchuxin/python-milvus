@@ -14,7 +14,7 @@ def log_message(message, level="INFO"):
     print(f"[{timestamp}] [{level}] {message}")
 
 # 1. 连接 Milvus
-def connect_to_milvus(host="43.255.214.131", port="19530", db_name=None):
+def connect_to_milvus(host="127.0.0.1", port="19530", db_name=None):
     """连接到 Milvus 服务"""
     log_message(f"开始连接 Milvus 服务... host: {host}, port: {port}, db: {db_name}")
     try:
@@ -74,7 +74,7 @@ def use_database(db_name):
         log_message("断开当前连接...")
         connections.disconnect("default")
         log_message("重新连接到指定数据库...")
-        connect_to_milvus("43.255.214.131", "19530", db_name)
+        connect_to_milvus("127.0.0.1", "19530", db_name)
         log_message(f"成功切换到数据库 '{db_name}'")
     except Exception as e:
         log_message(f"切换数据库失败: {e}", "ERROR")
